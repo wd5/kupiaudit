@@ -1,3 +1,4 @@
+import os
 # Django settings for kupiaudit project.
 
 DEBUG = True
@@ -6,6 +7,8 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
+
+LOGIN_URL = '/cabinet/login'
 
 MANAGERS = ADMINS
 
@@ -27,11 +30,11 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Moscow'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 SITE_ID = 1
 
@@ -45,27 +48,31 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+TINYMCE_JS_URL = STATIC_URL + 'js/tiny_mce/tiny_mce.js'
+TINYMCE_JS_ROOT = os.path.join(PROJECT_PATH, 'static/js/tiny_mce')
+
+ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
+#
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -103,6 +110,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'kupiaudit.urls'
 
 TEMPLATE_DIRS = (
+    os.path.join(PROJECT_PATH, 'templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -115,10 +123,15 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grappelli',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'filebrowser',
+    'tinymce',
+    'main',
+    'cabinet',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -142,6 +155,17 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'advanced',
+    'mode': 'textareas',
+    'plugins' : 'paste, fullscreen, legacyoutput, preview, style, media',
+    'theme_advanced_buttons3_add' : 'pastetext,pasteword,selectall,fullscreen,preview,styleprops,media',
+    'fullscreen_new_window' : 'true',
+    'fullscreen_settings' : {
+                'theme_advanced_path_location' : 'top'
+        }
 }
 
 try:

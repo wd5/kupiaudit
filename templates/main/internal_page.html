@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block site_wrapper %}
+{% include "tags/menu.html" %}
+{% if request.path == '/time' %}
+    Сроки
+{% else %}
+    {% if request.path == '/money' %}
+        Стоимость
+    {% endif %}
+    {% if request.path == '/faq' %}
+        Частые вопросы
+    {% endif %}
+    {% if request.path == '/about' %}
+        О наc
+    {% endif %}
+{% endif %}
+{% endblock %}

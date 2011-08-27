@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block site_wrapper %}
+{% include "tags/menu.html" %}
+    {{ pocket.name }}
+    {{ pocket.mini_description|safe }}
+    {{ pocket.description|safe }}
+    <form id="client_form" action="" method="post">{% csrf_token %}
+        {{ form.as_table }}
+        {{ formset.management_form }}
+        {{ formset.non_form_errors }}
+        {% for form in formset.forms %}
+            <p>{{ form.as_p }}</p>
+        {% endfor %}
+            <tr>
+                <td style="padding:5px; text-align:center;">
+                    <input type="submit" value="Подтвердить" class="selectbutton" />
+                </td>
+            </tr>
+    </form>
+{% endblock %}

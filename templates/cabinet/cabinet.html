@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load cabinet_tags %}
+{% block site_wrapper %}
+{% include "tags/menu.html" %}
+    <a href="/cabinet/logout">Выйти</a>
+    <p>Добро пожаловать, {{ user.first_name }}!</p>
+
+    Заказ выполняется:<br>
+    {% for order in processed_orders %}
+        <a href="{{ order.pocket.slug }}">{{ order.pocket.name }}</a> для <a href="{{ order.domen }}">{{ order.domen|cut_http }}</a>
+        {{ order.pocket.mini_description|safe }}
+        <img src="{{ order.pocket.image.url }}" alt=""><br><br>
+    {% endfor %}
+    Выполненные заказы:<br>
+    {% for order in completed_orders %}
+        <a href="{{ order.pocket.slug }}">{{ order.pocket.name }}</a> для <a href="{{ order.domen }}">{{ order.domen|cut_http }}</a>
+        {{ order.pocket.mini_description|safe }}
+        <img src="{{ order.pocket.image.url }}" alt=""><br><br>
+    {% endfor %}
+    Все пакеты:<br>
+    {% for pocket in pockets %}
+        <a href="{{ pocket.slug }}">{{ pocket.name }}</a>
+        {{ pocket.mini_description|safe }}
+        <img src="{{ pocket.image.url }}" alt=""><br><br>
+    {% endfor %}
+{% endblock %}

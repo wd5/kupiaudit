@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block site_wrapper %}
+{% include "tags/menu.html" %}
+{% for pocket in pockets %}
+    <a href="{{ pocket.slug }}">{{ pocket.name }}</a>
+    {{ pocket.mini_description|safe }}
+    <img src="{{ pocket.image.url }}" alt=""><br><br>
+{% endfor %}
+{% endblock %}
