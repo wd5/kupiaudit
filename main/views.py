@@ -34,6 +34,7 @@ def pocket(request, pocket_slug):
                 newform.client = request.user
                 newform.pocket = pocket
                 newform.save()
+                return HttpResponseRedirect("/cabinet")
         else:
             form = ClientForm(request.POST)
             if form.is_valid():
@@ -55,7 +56,7 @@ def pocket(request, pocket_slug):
                         u'Регистрация купиаудит ру', u'Логин:%s\nПароль:%s' % (user.username, password), 'info@my-spy.ru', [user.username], 'fail_silently=False'])
                     t.setDaemon(True)
                     t.start()
+                    return HttpResponseRedirect("/cabinet")
                 else:
                     user.delete()
-        return HttpResponseRedirect("/cabinet")
     return render_to_response("main/pocket_page.html", locals(), context_instance=RequestContext(request))
