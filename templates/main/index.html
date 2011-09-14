@@ -1,9 +1,24 @@
 {% extends "base.html" %}
 {% block site_wrapper %}
-{% include "tags/menu.html" %}
-{% for pocket in pockets %}
-    <a href="{{ pocket.slug }}">{{ pocket.name }}</a>
-    {{ pocket.mini_description|safe }}
-    <img src="{{ pocket.image.url }}" alt=""><br><br>
-{% endfor %}
+{% load main_tags %}
+	<div class="content_text">
+		Ауди́т, ауди́торская прове́рка — процедура независимой оценки деятельности организации, системы, процесса, проекта или продукта. Чаще всего термин употребляется применительно к проверке бухгалтерской отчётности компаний. Различают операционный, технический, экологический, качества и прочие разновидности аудита. Отдельные виды аудита близки по значению к сертификации.
+	</div>
+	{% for pocket in pockets %}
+		{% if forloop.counter|div:2 == 0 %}
+		<div class="index_pocket alignright grad_round_white">
+		{% else %}
+		<div class="index_pocket alignleft grad_round_white">
+		{% endif %}
+			<div class="title gradient_yelow">
+				<i class="left"></i><i class="right"></i>
+				<a href="{{ pocket.slug }}">{{ pocket.name }}</a>
+			</div>
+			<div class="content_pocket">
+			    <a href="{{ pocket.slug }}"><img src="{{ pocket.image.url }}" alt="{{ pocket.name }}" title="{{ pocket.name }}"></a>
+			    <div class="dscr">{{ pocket.mini_description|safe }}</div>
+			    <p class="link"><a href="{{ pocket.slug }}">Подробнее</a></p>
+			</div>
+	    </div>
+	{% endfor %}
 {% endblock %}
