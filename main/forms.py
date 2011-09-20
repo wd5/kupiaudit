@@ -5,7 +5,7 @@ from django.forms import ModelForm
 from cabinet.models import Order
 
 class ClientForm(forms.Form):
-    name = forms.CharField(max_length=100)
+    name = forms.CharField(max_length=100, label="Имя")
     email = forms.EmailField(max_length=100)
 
 class OrderForm(ModelForm):
