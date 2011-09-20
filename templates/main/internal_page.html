@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 {% block site_wrapper %}
-{% include "tags/menu.html" %}
-{% if request.path == '/time' %}
-    Сроки
-{% else %}
+	{% if request.path == '/time' %}
+	   <h1 class="head_title">Сроки</h1>
+	{% else %}
     {% if request.path == '/money' %}
-        Стоимость
+        <h1 class="head_title">Стоимость</h1>
     {% endif %}
     {% if request.path == '/faq' %}
-        Частые вопросы
+       <h1 class="head_title"> Частые вопросы</h1>
     {% endif %}
     {% if request.path == '/about' %}
-        О наc
+       <h1 class="head_title"> О наc</h1>
     {% endif %}
 {% endif %}
 {% endblock %}

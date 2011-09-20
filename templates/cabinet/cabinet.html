@@ -10,16 +10,25 @@
 			Заказ выполняется:
 		</div>
 		<div class="content_pocket clearfix">
-		    {% for order in processed_orders %}
-		    	<img class="alignleft" src="{{ order.pocket.image.url }}" alt="{{ order.pocket.name }}" title="{{ order.pocket.name }}">
-		    	<div class="alignleft name">
-			        <a href="{{ order.pocket.slug }}">{{ order.pocket.name }}</a> для <a href="{{ order.domen }}">{{ order.domen|cut_http }}</a>
-		        </div>
-		        <div class="alignleft date">
-			        Дата заказа: 19.08.2011
-		        </div>
-		        <div class="clr"></div>
-		    {% endfor %}
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			    {% for order in processed_orders %}
+			    	 <tr>
+						<td style="padding: 5px 0">  
+					    	<img class="alignleft" src="{{ order.pocket.image.url }}" alt="{{ order.pocket.name }}" title="{{ order.pocket.name }}">
+					    </td>
+					    <td>
+					    	<div class="alignleft name">
+						        <a href="{{ order.pocket.slug }}">{{ order.pocket.name }}</a> для <a href="{{ order.domen }}">{{ order.domen|cut_http }}</a>
+					        </div>
+					    </td>
+					    <td>
+					        <div class="alignright date">
+						        Дата заказа: 19.08.2011
+					        </div>
+					    </td>
+					</tr>
+			    {% endfor %}
+			</table>
 	    </div>
 	</div>
 	
@@ -29,16 +38,25 @@
 			Выполненные заказы:
 		</div>
 		<div class="content_pocket clearfix">
-		    {% for order in completed_orders %}
-		    	<img class="alignleft" src="{{ order.pocket.image.url }}" alt="{{ order.pocket.name }}" title="{{ order.pocket.name }}">
-		    	<div class="alignleft name">
-			        <a href="{{ order.pocket.slug }}">{{ order.pocket.name }}</a> для <a href="{{ order.domen }}">{{ order.domen|cut_http }}</a>
-		        </div>
-		        <div class="alignleft date">
-			        Дата заказа: 19.08.2011
-		        </div>
-		        <div class="clr"></div>
-		    {% endfor %}
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			    {% for order in completed_orders %}
+			  		<tr>
+						<td style="padding: 5px 0">   		
+					    	<img class="alignleft" src="{{ order.pocket.image.url }}" alt="{{ order.pocket.name }}" title="{{ order.pocket.name }}">
+					    </td>
+					    <td>
+					    	<div class="alignleft name">
+						        <a href="{{ order.pocket.slug }}">{{ order.pocket.name }}</a> для <a href="{{ order.domen }}">{{ order.domen|cut_http }}</a>
+					        </div>
+					  	</td>
+					    <td>
+					        <div class="alignright date">
+						        Дата заказа: 19.08.2011
+					        </div>
+					  	</td>
+					</tr>
+			    {% endfor %}
+			</table>
 		 </div>
     </div>
     
@@ -48,16 +66,25 @@
 			Все пакеты:
 		</div>  
 		<div class="content_pocket clearfix">
-		    {% for pocket in pockets %}
-		        <img class="alignleft" src="{{ pocket.image.url }}" alt="{{ pocket.name }}" title="{{ pocket.name }}">
-		    	<div class="alignleft name">
-			        <a href="{{ pocket.slug }}">{{ pocket.name }}</a>
-		        </div>
-		        <div class="alignleft date">
-			        Дата заказа: 19.08.2011
-		        </div>
-		        <div class="clr"></div>
-		    {% endfor %}
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			    {% for pocket in pockets %}
+				    <tr>
+						<td style="padding: 5px 0">  	
+					        <img class="alignleft" src="{{ pocket.image.url }}" alt="{{ pocket.name }}" title="{{ pocket.name }}">
+					    </td>
+					    <td>
+					    	<div class="alignleft name">
+						        <a href="{{ pocket.slug }}">{{ pocket.name }}</a>
+					        </div>
+					   	</td>
+					    <td>
+					        <div class="alignright date">
+						        Дата заказа: 19.08.2011
+					        </div>
+					    </td>
+					</tr>
+			    {% endfor %}
+			</table>
 		</div>
     </div>
 {% endblock %}

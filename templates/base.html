@@ -25,15 +25,11 @@
 		<script>DD_belatedPNG.fix("img, .png_bg");</script>
 	<![endif]-->
 	<div id="wrapper">
-	  
-		<header>
-			<div id="logo">
+		<header class="clearfix">
+			<div id="logo" class="alignleft">
 				<a href="/"><img src="{{ STATIC_URL }}res/img/logo.png"/></a>	
 			</div>
-			<div id="top_menu">
-				<a href="/cabinet">Личный кабинет</a>
-                {% greeting request %}
-			</div>
+            {% greeting request %}	
 		</header>
 		
 		<div id="main" class="clearfix">

@@ -1,5 +1,10 @@
 {% if is_auth %}
-    Авторизован {{ is_auth }}
+	<div class="alignright wellcome">Добро пожаловать, {{ is_auth }}!</div>
+	<div id="top_menu" class="clr">
+		<a href="/cabinet">Личный кабинет</a> | <a href="/cabinet/logout">Выйти</a>
+	</div>
 {% else %}
-    Регистрация
+	<div id="top_menu" class="clr">
+		<a href="/cabinet">Личный кабинет</a>
+	</div>
 {% endif %}

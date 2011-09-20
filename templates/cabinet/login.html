@@ -1,18 +1,36 @@
 {% extends "base.html" %}
 {% block site_wrapper %}
-{% include "tags/menu.html" %}
-    Залогинься блеать!!!
+    <h1 class="head_title">Залогинься блеать</h1>
     {% if error %}
-    <p class="error">Сожалеем, вы неправильно ввели логин или пароль</p>
+    <p class="error">Сожалеем, вы неправильно ввели логин или пароль</p><br>
     {% endif %}
 
 <form action='' method='post'> {% csrf_token %}
-    <label for="username">Логин:</label>
-    <input type="text" name="username" value="" id="username">
-    <label for="password">Пароль:</label>
-    <input type="password" name="password" value="" id="password">
-
-    <input type="submit" value="login" />
-    <input type="hidden" name="next" value="{{ next|escape }}" />
+	<table class="login_form" cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td>		
+			    <label for="username">Логин:</label>
+			</td>
+			<td>
+			    <input type="text" name="username" value="" id="username">
+			</td>
+		</tr>
+		<tr>
+			<td>
+			    <label for="password">Пароль:</label>
+			</td>
+			<td>
+			    <input type="password" name="password" value="" id="password">
+			</td>
+		</tr>
+		<tr>
+			<td>
+			</td>
+			<td class="textright">	
+			    <input class="gradient_yelow" type="submit" value="Вход" />
+			    <input type="hidden" name="next" value="{{ next|escape }}" />
+			</td>
+		</tr>   
+	</table>
 </form>
 {% endblock %}
