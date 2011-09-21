@@ -17,4 +17,4 @@ class BaseClientFormset(BaseInlineFormSet):
     def clean(self):
         self.validate_unique()
         if not self.forms[0].has_changed():
-            raise forms.ValidationError("Домен должен быть заполнен")
+            raise forms.ValidationError("Сайт должен быть заполнен")
