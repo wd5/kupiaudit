@@ -56,8 +56,8 @@ MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-TINYMCE_JS_URL = STATIC_URL + 'js/tiny_mce/tiny_mce.js'
-TINYMCE_JS_ROOT = os.path.join(PROJECT_PATH, 'static/js/tiny_mce')
+#TINYMCE_JS_URL = STATIC_URL + 'js/tiny_mce/tiny_mce.js'
+#TINYMCE_JS_ROOT = os.path.join(PROJECT_PATH, 'static/js/tiny_mce')
 
 ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
 #
@@ -129,7 +129,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'filebrowser',
-    'tinymce',
     'main',
     'cabinet',
 )
@@ -155,17 +154,6 @@ LOGGING = {
             'propagate': True,
         },
     }
-}
-
-TINYMCE_DEFAULT_CONFIG = {
-    'theme': 'advanced',
-    'mode': 'textareas',
-    'plugins' : 'paste, fullscreen, legacyoutput, preview, style, media',
-    'theme_advanced_buttons3_add' : 'pastetext,pasteword,selectall,fullscreen,preview,styleprops,media',
-    'fullscreen_new_window' : 'true',
-    'fullscreen_settings' : {
-                'theme_advanced_path_location' : 'top'
-        }
 }
 
 try:
