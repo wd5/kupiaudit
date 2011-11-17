@@ -1,13 +1,17 @@
 <ul class="menu">
-	<li class="title gradient_yelow">
+	<li {% if request.path == "/" %} class="title gradient_yelow" {% endif %}>
 		<a href="/">Заказать аудит!</a>
-	</li><li>
+	</li>
+    <li {% if request.path == "/time" %} class="title gradient_yelow" {% endif %}>
 		<a href="/time">Сроки</a>
-	</li><li>
+	</li>
+    <li {% if request.path == "/money" %} class="title gradient_yelow" {% endif %}>
 		<a href="/money">Стоимость</a>
-	</li><li>
+	</li>
+    <li {% if request.path == "/faq" %} class="title gradient_yelow" {% endif %}>
 		<a href="/faq">Частые вопросы</a>
-	</li><li>
+	</li>
+    <li {% if request.path == "/about" %} class="title gradient_yelow" {% endif %}>
 		<a href="/about">О нас</a>
 	</li>
 </ul>

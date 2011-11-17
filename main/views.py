@@ -15,8 +15,17 @@ def index(request):
     pockets = Pocket.objects.all()
     return render_to_response("main/index.html", locals(), context_instance=RequestContext(request))
 
-def menu(request):
-    return render_to_response("main/internal_page.html", locals(), context_instance=RequestContext(request))
+def time(request):
+    return render_to_response("main/time.html", locals(), context_instance=RequestContext(request))
+
+def money(request):
+    return render_to_response("main/money.html", locals(), context_instance=RequestContext(request))
+
+def faq(request):
+    return render_to_response("main/faq.html", locals(), context_instance=RequestContext(request))
+
+def about(request):
+    return render_to_response("main/about.html", locals(), context_instance=RequestContext(request))
 
 def pocket(request, pocket_slug):
     pocket = Pocket.objects.get(slug=pocket_slug)
