@@ -5,7 +5,7 @@ from django.contrib import admin
 from filebrowser.sites import site
 admin.autodiscover()
 
-handler500 = 'kupiaudit.catalog.views.internal_error'
+#handler500 = 'kupiaudit.catalog.views.internal_error'
 
 urlpatterns = patterns('',
     (r'^cabinet', include('kupiaudit.cabinet.urls')),
