@@ -12,15 +12,132 @@
 			<div class="clr"></div>   
 	    </div>
 	</div>
-    
-   
-    <form id="client_form" action="" method="post">
-    	{% csrf_token %}
-     <table cellpadding="0" cellspacing="0" border="0" id="new_pocket_form">
-        {{ form.as_table }}
-        {{ formset.non_form_errors }}
-        {{ formset }}
-		<td></td><td class="textright"><input class="gradient_yelow" type="submit" value="Подтвердить" class="selectbutton" /></td>
-	 </table>
+
+<style>
+.form1 {  width: 400px }
+.form1 * {
+  font-family: Arial, Tahoma, sans-seif;
+  font-size: 1em;
+}
+.form1 label {
+  display: block;
+  margin-top: 1em;
+}
+.form1 label:first-child {  margin-top: 0 }
+.form1 input,
+.form1 textarea {
+  width: 100%;
+  margin-top: .5em;
+}
+.form1 button {
+  margin-top: 1em;
+  float: right;
+}
+.form1 textarea {  height: 5em }
+
+
+input[type=text],
+textarea {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-color: #CCCCCC #AAAAAA #AAAAAA #CCCCCC;
+  border-style: solid;
+  border-width: 1px;
+  outline: 1px solid #fff;
+  padding: 5px 3px 3px 5px;
+}
+input[type=text]:focus,
+textarea:focus {
+  border: 1px solid #c7a055;
+  outline: 1px solid #f1ca7e;
+}
+.myButton {
+  -moz-box-shadow: inset 0px 1px 0px 0px #fff6af;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #fff6af;
+  box-shadow: inset 0px 1px 0px 0px #fff6af;
+  background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23) );
+  background: -moz-linear-gradient( center top, #ffec64 5%, #ffab23 100% );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23');
+  background-color: #ffec64;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid #ffaa22;
+  display: inline-block;
+  color: #333333;
+  cursor: pointer;
+  font-family: arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 1px 1px 0px #ffee66;
+}
+.myButton:hover {
+  background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64) );
+  background: -moz-linear-gradient( center top, #ffab23 5%, #ffec64 100% );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64');
+  background-color: #ffab23;
+}
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+</style>
+
+    {% if request.user.is_authenticated %}
+    <form class="form1 clearfix" method="post" action="">
+        {% csrf_token %}
+      <label for="site">Сайт:</label>
+        {{ form.domen }}
+
+      <label for="contacts">Контакты:</label>
+        {{ form.contacts }}
+
+      <label for="keywords">Ключевые слова:</label>
+        {{ form.keywords }}
+
+      <label for="reason">Причина обращения:</label>
+        {{ form.reason }}
+
+      <label for="comment">Комментарий:</label>
+        {{ form.comment }}
+
+      <button class="myButton">Подтвердить</button>
     </form>
+    {% else %}
+    <form class="form1 clearfix" method="post" action="">
+        {% csrf_token %}
+        {{ form.name.errors }}
+      <label for="name">Имя:</label>
+        {{ form.name }}
+
+        {{ form.email.errors }}
+      <label for="email">Email:</label>
+        {{ form.email }}
+
+        {{ form.domen.errors }}
+      <label for="site">Сайт:</label>
+        {{ form.domen }}
+
+        {{ form.contacts.errors }}
+      <label for="contacts">Контакты:</label>
+        {{ form.contacts }}
+
+        {{ form.keywords.errors }}
+      <label for="keywords">Ключевые слова:</label>
+        {{ form.keywords }}
+
+        {{ form.reason.errors }}
+      <label for="reason">Причина обращения:</label>
+        {{ form.reason }}
+
+        {{ form.comment.errors }}
+      <label for="comment">Комментарий:</label>
+        {{ form.comment }}
+
+      <button class="myButton">Подтвердить</button>
+    </form>
+    {% endif %}
+
 {% endblock %}
+
