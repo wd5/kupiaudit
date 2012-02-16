@@ -13,15 +13,21 @@ from settings import EMAIL_HOST_USER
 
 def index(request):
     pockets = Pocket.objects.all()
+    page_title = u"Качественный поисковый аудит сайтов для вебмастеров от SEO-специалистов"
+    meta_keywords = u"SEO аудит"
+    meta_description = u"Качественный поисковый аудит сайтов для вебмастеров от SEO-специалистов"
     return render_to_response("main/index.html", locals(), context_instance=RequestContext(request))
 
 def time(request):
+    page_title = u"Сроки - Купи-Аудит.ру"
     return render_to_response("main/time.html", locals(), context_instance=RequestContext(request))
 
 def money(request):
+    page_title = u"Стоимость - Купи-Аудит.ру"
     return render_to_response("main/money.html", locals(), context_instance=RequestContext(request))
 
 def faq(request):
+    page_title = u"Частые вопросы - Купи-Аудит.ру"
     return render_to_response("main/faq.html", locals(), context_instance=RequestContext(request))
 
 def about(request):
@@ -29,6 +35,7 @@ def about(request):
 
 def pocket(request, pocket_slug):
     pocket = Pocket.objects.get(slug=pocket_slug)
+    page_title = u"%s от Купи-Аудит.ру" % pocket.name
     if request.user.is_authenticated():
         form = OrderForm()
     else:
