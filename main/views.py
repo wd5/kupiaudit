@@ -13,7 +13,7 @@ from settings import EMAIL_HOST_USER
 
 def index(request):
     pockets = Pocket.objects.all()
-    page_title = u"Качественный поисковый аудит сайтов для вебмастеров от SEO-специалистов"
+    page_title = u"Купи-Аудит.ру - комплексный SEO-аудит сайтов"
     meta_keywords = u"SEO аудит"
     meta_description = u"Качественный поисковый аудит сайтов для вебмастеров от SEO-специалистов"
     return render_to_response("main/index.html", locals(), context_instance=RequestContext(request))

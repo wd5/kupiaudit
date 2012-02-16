@@ -12,6 +12,7 @@ class Order(models.Model):
     client = models.ForeignKey(User)
     is_processed = models.BooleanField(default=True)
     pocket = models.ForeignKey(Pocket, null=True)
+    date = models.DateField(auto_now=True)
 
     def __unicode__(self):
         return self.client.username
