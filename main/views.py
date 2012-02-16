@@ -62,7 +62,8 @@ def pocket(request, pocket_slug):
                 user = authenticate(username=user.email, password=password)
                 login(request, user)
                 t = threading.Thread(target= send_mail, args=[
-                    u'регистрация купиаудит ру', u'логин:%s\nпароль:%s' % (user.username, password), 'info@my-spy.ru', [user.username], 'fail_silently=false'])
+                    u'Доступ в личный кабинет Купи-Аудит.ру', u'Здравствуйте. Спасибо за заказ аудита в сервисе Купи-Аудит.ru\n\n\
+                    Ваши данные для входа в личный кабинет:\nлогин:%s\nпароль:%s' % (user.username, password), 'info@kupiauditru', [user.username], 'fail_silently=false'])
                 t.setDaemon(True)
                 t.start()
                 return HttpResponseRedirect("/cabinet")
