@@ -16,19 +16,19 @@
     {% if request.user.is_authenticated %}
     <form class="form1 clearfix" method="post" action="">
         {% csrf_token %}
-      <label for="site">Сайт:</label>
+      <label for="site">Адрес сайта*:</label>
         {{ form.domen }}
 
-      <label for="contacts">Контакты:</label>
+      <label for="contacts">Телефон или Skype*:</label>
         {{ form.contacts }}
 
-      <label for="keywords">Ключевые слова:</label>
+      <label for="keywords">Приоритетные ключевые запросы:</label>
         {{ form.keywords }}
 
-      <label for="reason">Причина обращения:</label>
+      <label for="reason">Причины, по которым вы заказываете аудит:</label>
         {{ form.reason }}
 
-      <label for="comment">Комментарий:</label>
+      <label for="comment">Дополнительные подробности:</label>
         {{ form.comment }}
 
       <button class="myButton">Подтвердить</button>
@@ -37,30 +37,31 @@
     <form class="form1 clearfix" method="post" action="">
         {% csrf_token %}
         
-      <label for="name">Имя:{{ form.name.errors }}</label>
+      <label for="name">Имя*:{{ form.name.errors }}</label>
         {{ form.name }}
 
-      <label for="email">Email:{{ form.email.errors }}</label>
+      <label for="email">Email*:{{ form.email.errors }}</label>
         {{ form.email }}
 
-      <label for="site">Сайт:{{ form.domen.errors }}</label>
+      <label for="site">Адрес сайта*:{{ form.domen.errors }}</label>
         {{ form.domen }}
 
-      <label for="contacts">Контакты:{{ form.contacts.errors }}</label>
+      <label for="contacts">Телефон или Skype*:{{ form.contacts.errors }}</label>
         {{ form.contacts }}
 
-      <label for="keywords">Ключевые слова:{{ form.keywords.errors }}</label>
+      <label for="keywords">Приоритетнык ключевые запросы:{{ form.keywords.errors }}</label>
         {{ form.keywords }}
 
-      <label for="reason">Причина обращения:{{ form.reason.errors }}</label>
+      <label for="reason">Причины, по которым вы заказываете аудит:{{ form.reason.errors }}</label>
         {{ form.reason }}
 
-      <label for="comment">Комментарий:{{ form.comment.errors }}</label>
+      <label for="comment">Дополнительные подробности:{{ form.comment.errors }}</label>
         {{ form.comment }}
 
       <button class="myButton">Подтвердить</button>
     </form>
     {% endif %}
+    * - Обязательно для заполнения.
 
 {% endblock %}
 

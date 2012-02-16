@@ -8,7 +8,7 @@ class ClientForm(forms.Form):
     name = forms.CharField(max_length=100, label="Имя")
     email = forms.EmailField(max_length=100)
     domen = forms.URLField(max_length=100, label="Сайт")
-    contacts = forms.CharField(label="Контакты", widget=forms.Textarea, required=False)
+    contacts = forms.CharField(label="Контакты", widget=forms.Textarea)
     keywords = forms.CharField(label="Ключевые слова", widget=forms.Textarea, required=False)
     reason = forms.CharField(label="Причина обращения", widget=forms.Textarea, required=False)
     comment = forms.CharField(label="Комментарий", widget=forms.Textarea, required=False)
