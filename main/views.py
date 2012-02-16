@@ -9,6 +9,7 @@ from forms import ClientForm, OrderForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
+from settings import EMAIL_HOST_USER
 
 def index(request):
     pockets = Pocket.objects.all()
@@ -62,8 +63,12 @@ def pocket(request, pocket_slug):
                 user = authenticate(username=user.email, password=password)
                 login(request, user)
                 t = threading.Thread(target= send_mail, args=[
-                    u'Доступ в личный кабинет Купи-Аудит.ру', u'Здравствуйте. Спасибо за заказ аудита в сервисе Купи-Аудит.ru\n\n\
-                    Ваши данные для входа в личный кабинет:\nлогин:%s\nпароль:%s' % (user.username, password), 'info@kupiauditru', [user.username], 'fail_silently=false'])
+                    u'Доступ в личный кабинет Купи-Аудит.ру', u'Здравствуйте. Спасибо за заказ аудита в сервисе Купи-Аудит.ру\n\n\
+                    Ваши данные для входа в личный кабинет:\nЛогин: %s\nПароль: %s' % (user.username, password), EMAIL_HOST_USER , [user.username], 'fail_silently=false'])
+                t.setDaemon(True)
+                t.start()
+                t = threading.Thread(target= send_mail, args=[
+                    u'Новый заказ Купи-Аудит.ру', u'http://kupiaudit.ru/admin/cabinet/order/%s/' % order.id, EMAIL_HOST_USER, [EMAIL_HOST_USER], 'fail_silently=false'])
                 t.setDaemon(True)
                 t.start()
                 return HttpResponseRedirect("/cabinet")
