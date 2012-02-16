@@ -14,11 +14,11 @@ def cabinet(request):
     processed_orders = user.order_set.filter(is_processed=True)
     completed_orders = user.order_set.filter(is_processed=False)
     pockets = Pocket.objects.all()
-    page_title = u"Личный кабинет - Купи-Аудит.ру"
+    page_title = u"Личный кабинет - КупиАудит.ру"
     return render_to_response("cabinet/cabinet.html", locals(), context_instance=RequestContext(request))
 
 def auth(request):
-    page_title = u"Личный кабинет - Купи-Аудит.ру"
+    page_title = u"Личный кабинет - КупиАудит.ру"
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
